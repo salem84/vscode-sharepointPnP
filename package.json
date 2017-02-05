@@ -19,6 +19,10 @@
       {
         "key": "ctrl+alt+g",
         "command": "pnp.replace_all_guids"
+      },
+      {
+        "key": "ctrl+alt+v",
+        "command": "pnp.validate_xml"
       }
     ],
     "commands": [

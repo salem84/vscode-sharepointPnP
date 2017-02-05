@@ -3,6 +3,7 @@
 		"prefix": "pnp:root",
 		"body": [
 			"<pnp:Provisioning xmlns:pnp=\"http://schemas.dev.office.com/PnP/2016/05/ProvisioningSchema\">",
+			"	<pnp:Preferences Author=\"John White\" Version=\"1.0\" Generator=\"Human being :-)\" />",
             "   <pnp:Templates ID=\"##SAMPLE-TEMPLATES##\">",
             "   </pnp:Templates>",
             "</pnp:Provisioning>"

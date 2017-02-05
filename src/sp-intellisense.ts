@@ -123,7 +123,7 @@ export default class SpPnpIntellisense implements vscode.CodeActionProvider {
         let terminal:vscode.Terminal = vscode.window.createTerminal("XML Validation");
         terminal.show(true);
         terminal.sendText(". " + psScript);
-        terminal.sendText("Validate-Xml " + xmlPath + " "+ xsdPath);
+        terminal.sendText("Test-XmlSchema -XmlPath " + xmlPath + " -SchemaPath "+ xsdPath);
         
 
         // var validator = require('xsd-schema-validator');
