@@ -26,7 +26,7 @@ export function activate(context: vscode.ExtensionContext) {
 
     let spPnp = new SpPnpIntellisense();
     spPnp.activate(context.subscriptions);
-    vscode.languages.registerCodeActionsProvider('pnp', spPnp);
+    vscode.languages.registerCodeActionsProvider('xml', spPnp);
 }
 
 // this method is called when your extension is deactivated

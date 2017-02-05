@@ -11,14 +11,17 @@
         "Other"
     ],
     "activationEvents": [
-        "onLanguage:xml",
-        "onCommand:extension.sayHello"
+        "onLanguage:xml"
     ],
     "main": "./out/src/extension",
     "contributes": {
+        "keybindings": [{
+             "key": "ctrl+alt+g",
+             "command": "pnp.replace_all_guids"
+        }],
         "commands": [{
-            "command": "extension.sayHello",
-            "title": "Hello World"
+            "command": "pnp.replace_all_guids",
+            "title": "Replace all GUIDs"
         }],
         "snippets": [{
 			"language": "xml",
@@ -35,6 +38,9 @@
         "compile": "tsc -watch -p ./",
         "postinstall": "node ./node_modules/vscode/bin/install",
         "test": "node ./node_modules/vscode/bin/test"
+    },
+    "dependencies": {
+        "node-uuid": "^1.4.1"
     },
     "devDependencies": {
         "typescript": "^2.0.3",
