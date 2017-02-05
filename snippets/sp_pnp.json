@@ -1,6 +1,6 @@
 {
     "pnp-root": {
-		"prefix": "pnp-root",
+		"prefix": "pnp:root",
 		"body": [
 			"<pnp:Provisioning xmlns:pnp=\"http://schemas.dev.office.com/PnP/2016/05/ProvisioningSchema\">",
             "   <pnp:Templates ID=\"##SAMPLE-TEMPLATES##\">",
@@ -8,6 +8,64 @@
             "</pnp:Provisioning>"
 		],
 		"description": "Insert root XML pnp"
+	},
+	"pnp-sitefields" : {
+		"prefix": "pnp:sitefields",
+		"body": [
+			"<pnp:SiteFields>",
+            "	",
+            "</pnp:SiteFields>"
+		],
+		"description": ""
+		
+	},
+"pnp-field" : {
+		"prefix": "pnp:field",
+		"body": [
+			"<Field Type=\"##TYPE##\" ",
+			"	DisplayName=\"##DISPLAY_NAME##\" ",
+			"	StaticName=\"##STATIC_NAME##\" ",
+			"	Name=\"##NAME##\" ",
+			"	ID=\"{##GUID##}\" ",
+			"	Required=\"FALSE\"",
+			"	ShowInViewForms=\"TRUE\" Hidden=\"FALSE\" />",
+            ""
+		],
+		"description": ""
+	},
+	"pnp-cts" : {
+		"prefix": "pnp:cts",
+		"body": [
+			"<pnp:ContentTypes>",
+			"	",
+            "</pnp:ContentTypes>"
+		],
+		"description": ""
+	},
+	"pnp-ct" : {
+		"prefix": "pnp:ct",
+		"body": [
+			"<pnp:ContentType ID=\"##COMPLEX_ID##\" ",
+			"	Name=\"ProjectDocument\" ",
+			"	Description=\"\" ",
+			"	Group=\"PnP Group\">",
+            "	<pnp:FieldRefs>",
+			"		",
+			"	</pnp:FieldRefs>",
+        	"</pnp:ContentType>"
+		],
+		"description": ""
 	}
+
+	/*
+	"pnp-" : {
+		"prefix": "pnp:",
+		"body": [
+			"",
+            ""
+		],
+		"description": ""
+	}
+	*/
     
 }

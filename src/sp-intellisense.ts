@@ -2,19 +2,26 @@
 
 import * as vscode from 'vscode';
 let uuid = require('node-uuid');
+// let xsd = require('libxml-xsd');
 
 
 export default class SpPnpIntellisense implements vscode.CodeActionProvider {
 
     private diagnosticCollection: vscode.DiagnosticCollection;
-    
+    private _context: vscode.ExtensionContext;
 
-    public activate(subscriptions: vscode.Disposable[]) {
+    public activate(context: vscode.ExtensionContext) {
+        this._context = context;
+
+        let subscriptions:vscode.Disposable[] = context.subscriptions;
+        
         console.log('Attivazione plugin!');
         let cmdReplaceAllGuids = vscode.commands.registerCommand('pnp.replace_all_guids', this.replaceAllGuids);
         let cmdReplaceGuid = vscode.commands.registerCommand('pnp.replace_guid', this.replaceGuid);
+        let cmdValidateXml = vscode.commands.registerCommand('pnp.validate_xml', this.validateXml, this);
 		subscriptions.push(cmdReplaceAllGuids);
 		subscriptions.push(cmdReplaceGuid);
+        subscriptions.push(cmdValidateXml);
         
 		this.diagnosticCollection = vscode.languages.createDiagnosticCollection();
 
@@ -38,7 +45,13 @@ export default class SpPnpIntellisense implements vscode.CodeActionProvider {
             title: "Replace this GUID",
             command: 'pnp.replace_guid',
             arguments: [document, diagnostic.range, diagnostic.message]
-        }];
+        },
+        {
+            title: "Replace all GUIDs",
+            command: 'pnp.replaceAllGuids',
+            arguments: []
+        },
+        ];
 
     }
 
@@ -87,7 +100,50 @@ export default class SpPnpIntellisense implements vscode.CodeActionProvider {
     }
 
     public replaceGuid(document: vscode.TextDocument, range: vscode.Range, message:string) {
+        var editor = vscode.window.activeTextEditor;
+        if (!editor) {
+            return; // No open text editor
+        }
+        
+        let newGuid = uuid.v4();
+        editor.edit(edit => edit.replace(range, newGuid));
+    }
 
+    public validateXml() {
+        var editor = vscode.window.activeTextEditor;
+        if (!editor) {
+            return; // No open text editor
+        }
+
+        let src:string = editor.document.getText();
+        
+        let xmlPath = vscode.window.activeTextEditor.document.uri.fsPath;
+        let xsdPath = this._context.asAbsolutePath('/xsd/ProvisioningSchema-2016-05.xsd');
+        let psScript = this._context.asAbsolutePath('/ps/Validate-Xml.ps1');
+        let terminal:vscode.Terminal = vscode.window.createTerminal("XML Validation");
+        terminal.show(true);
+        terminal.sendText(". " + psScript);
+        terminal.sendText("Validate-Xml " + xmlPath + " "+ xsdPath);
+        
+
+        // var validator = require('xsd-schema-validator');
+        
+        
+        // validator.validateXML(src, this._xsdPath, function(err, result) {
+        // if (err) {
+        //     throw err;
+        // }
+        
+        // result.valid; // true 
+        // });
+
+        /*xsd.parseFile(schemaPath, function(err, schema){
+            schema.validate(src, function(err, validationErrors){
+                var a ="";
+                // err contains any technical error 
+                // validationError is an array, null if the validation is ok 
+            });  
+        });*/
     }
 
     public dispose(): void {

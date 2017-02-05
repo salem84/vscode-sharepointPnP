@@ -25,7 +25,7 @@ export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(disposable);*/
 
     let spPnp = new SpPnpIntellisense();
-    spPnp.activate(context.subscriptions);
+    spPnp.activate(context);
     vscode.languages.registerCodeActionsProvider('xml', spPnp);
 }
 
