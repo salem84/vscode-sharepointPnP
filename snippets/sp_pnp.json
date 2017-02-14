@@ -56,6 +56,50 @@
         	"</pnp:ContentType>"
 		],
 		"description": ""
+	},
+	"pnp-lists" : {
+		"prefix": "pnp:lists",
+		"body": [
+			"<pnp:Lists>",
+            "	",
+			"</pnp:Lists>"
+		],
+		"description": ""
+	},
+	"pnp-files" : {
+		"prefix": "pnp:files",
+		"body": [
+			"<pnp:Files>",
+            "",
+			"</pnp:Files>"
+		],
+		"description": ""
+	},
+	"pnp-websettings" : {
+		"prefix": "pnp:websettings",
+		"body": [
+			"<pnp:WebSettings",
+			"	RequestAccessEmail=\"##EMAIL##\"",
+			"	NoCrawl=\"##False##\"",
+			"	WelcomePage=\"##WELCOMEPAGE##\"",
+			"	Title=\"##TITLE##\"",
+			"	Description=\"##DESCRIPTION##\"",
+			"	SiteLogo=\"##SITE_LOGO##\"",
+			"	AlternateCSS=\"##ALTERNATE_CSS##\"",
+			"	MasterPageUrl=\"##MASTER_PAGE_URL##\"",
+			"	CustomMasterPageUrl=\"##CUSTOM_MASTER_PAGE_URL##\">",
+			"</pnp:WebSettings>"
+		],
+		"description": ""
+	},
+	"pnp-propertybag" : {
+		"prefix": "pnp:propertybag",
+		"body": [
+			"<pnp:PropertyBagEntries>",
+   			"	<pnp:PropertyBagEntry />",
+			"</pnp:PropertyBagEntries>"
+		],
+		"description": ""
 	}
 
 	/*

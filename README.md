@@ -13,7 +13,14 @@ This extension contains code snippets and utility to help you write XML Template
 | `pnp:sitefields→` | `<pnp:SiteFields>` |
 | `pnp:field→` | `<pnp:Field>` |
 | `pnp:cts→` | `<pnp:ContentTypes>` |
-| `pnp:ct→` | `<pnp:ContentType` |
+| `pnp:ct→` | `<pnp:ContentType>` |
+| `pnp:lists→` | `<pnp:Lists>` |
+| `pnp:files→` | `<pnp:Files>` |
+| `pnp:websettings→` | `<pnp:WebSettings>` |
+| `pnp:propertybag→` | `<pnp:PropertyBagEntries>` |
+| `→` | `` |
+| `→` | `` |
+
 
 ## Shortcuts
 
